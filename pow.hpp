@@ -11,6 +11,8 @@ class Pow : public Base {
             r_value = right->evaluate();
             l_string = left->stringify();
             r_string = right->stringify();
+	    l_child = left;
+	    r_child = right;
         }
         virtual double evaluate() {
         	product = 1.0;
@@ -53,10 +55,10 @@ class Pow : public Base {
         }
         virtual Base* get_child(int i) {
             if (i  = 0) {
-                return left;
+                return l_child;
             }
             else {
-                return right;
+                return r_child;
             }
         }
 
@@ -74,8 +76,8 @@ class Pow : public Base {
     private:
         double l_value, r_value, product;
         std::string l_string, r_string;
-        Base* left;
-        Base* right;
+        Base* l_child;
+        Base* r_child;
 };
 
 #endif //__POW_HPP__
