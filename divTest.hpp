@@ -26,5 +26,17 @@ TEST(VisitorDivTest, Two_div_Eleven) {
     EXPECT_EQ(v.PrintLaTeX(div), result);
 }
 
+TEST(VisitorDivTest, One_div_Two_div_Three) {
+    Base* op1 = new Op(1);
+    Base* op2 = new Op(2);
+    Base* op3 = new Op(3);
+    Base* div = new Div(op1, op2);
+    Base* div2 = new Div(div, op3);
+    std::string result = "${\\frac{\\frac{1}{2}}{3}}$";
+    VisitorLaTeX v;
+    EXPECT_EQ(v.PrintLaTeX(div2), result);
+}
+
+
 
 #endif //__DIVTEST_HPP__
