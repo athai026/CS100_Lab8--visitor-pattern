@@ -21,13 +21,16 @@ class Mult : public Base {
             return ("(" + l_string + "*" + r_string + ")");
         }
 	virtual int number_of_children() {
-            if ( left != nullptr && right != nullptr) {
-                return 2;
+            int num_child = 0;
+            if (l_child != nullptr) {
+                ++num_child;
             }
-            else {
-                return 0;
+            if (r_child != nullptr) {
+                ++num_child;
             }
+            return num_child;
         }
+
         virtual Base* get_child(int i) {
             if (i  = 0) {
                 return l_child;
