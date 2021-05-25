@@ -32,11 +32,14 @@ class Mult : public Base {
         }
 
         virtual Base* get_child(int i) {
-            if (i  = 0) {
+            if (i == 0) {
                 return l_child;
             }
-            else {
+            else if (i == 1) {
                 return r_child;
+            }
+            else {
+                return nullptr;
             }
         }
 
