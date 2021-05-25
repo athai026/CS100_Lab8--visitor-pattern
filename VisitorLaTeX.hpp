@@ -4,6 +4,7 @@
 #include "visitor.hpp"
 #include "iterator.hpp"
 #include "op.hpp"
+#include "mult.hpp"
 #include "sub.hpp"
 #include "div.hpp"
 #include "pow.hpp"
@@ -21,7 +22,16 @@ class VisitorLaTeX : public Visitor {
             output << node->stringify();
             output << "}";
         }
-	void visit_add_begin(Add* node) {
+	    void visit_mult_begin(Mult* node) {
+            output << "{(";
+        }
+        void visit_mult_middle(Mult* node) {
+            output << "\\cdot";
+        }
+        void visit_mult_end(Mult* node) {
+            output << ")}";
+        }
+	    void visit_add_begin(Add* node) {
             output << "{(";
         }
         void visit_add_middle(Add* node) {

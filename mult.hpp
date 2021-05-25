@@ -10,6 +10,8 @@ class Mult : public Base {
             r_value = right->evaluate();
             l_string = left->stringify();
             r_string = right->stringify();
+	    l_child = left;
+	    r_child = right;
         }
         virtual double evaluate() {
             product = l_value * r_value;
@@ -18,12 +20,42 @@ class Mult : public Base {
         virtual std::string stringify() {
             return ("(" + l_string + "*" + r_string + ")");
         }
+	virtual int number_of_children() {
+            int num_child = 0;
+            if (l_child != nullptr) {
+                ++num_child;
+            }
+            if (r_child != nullptr) {
+                ++num_child;
+            }
+            return num_child;
+        }
 
+        virtual Base* get_child(int i) {
+            if (i  = 0) {
+                return l_child;
+            }
+            else {
+                return r_child;
+            }
+        }
+
+        void accept(Visitor* visitor, int index) {
+            if (index == 0) {
+                visitor->visit_mult_begin(this);
+            }
+            else if (index == 1) {
+                visitor->visit_mult_middle(this);
+            }
+            else if (index == 2) {
+                visitor->visit_mult_end(this);
+            }
+        }
     private:
         double l_value, r_value, product;
         std::string l_string, r_string;
-        Base* left;
-        Base* right;
+        Base* l_child;
+        Base* r_child;
 };
 
 #endif //__MULT_HPP__
