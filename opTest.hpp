@@ -14,4 +14,11 @@ TEST(VisitorOpTest, One) {
     EXPECT_EQ(v.PrintLaTeX(op1), result);
 }
 
+TEST(VisitorOpTest, negOne) {
+    Base* op1 = new Op(-1);
+    std::string result = "${-1}$";
+    VisitorLaTeX v;
+    EXPECT_EQ(v.PrintLaTeX(op1), result);
+}
+
 #endif //__OPTEST_HPP__
