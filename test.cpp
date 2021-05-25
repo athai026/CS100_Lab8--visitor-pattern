@@ -6,6 +6,7 @@
 #include "opTest.hpp"
 #include "multTest.hpp"
 #include "powTest.hpp"
+#include "mixedTest.hpp"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
