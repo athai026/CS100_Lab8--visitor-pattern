@@ -15,7 +15,7 @@ class Pow;
 
 class Visitor{
     public:
-        std::stringstream output;
+        std::stringstream output;      
         virtual ~Visitor() = default;
 
         // Nodes with no children are visited only once (index = 0)
