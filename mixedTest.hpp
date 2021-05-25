@@ -79,4 +79,21 @@ TEST(MixedTest, AddSubMult) {
     EXPECT_EQ(v.PrintLaTeX(add), result);
 }
 
+TEST(MixedTest, AddSubMultDivPow) {
+    Base* one = new Op(1);
+    Base* two = new Op(2);
+    Base* three = new Op(3);
+    Base* four = new Op(4);
+    Base* five = new Op(5);
+    Base* six = new Op(6);
+    Base* sub = new Sub(three, four);
+    Base* mult = new Mult(sub, five);
+    Base* pow = new Pow(one, two);
+    Base* add = new Add(pow, mult);
+    Base* div = new Div(add, six);
+    std::string result = "${\\frac{({({1}^{2})}+{({({3}-{4})}\\cdot{5})})}{6}}$";
+    VisitorLaTeX v;
+    EXPECT_EQ(v.PrintLaTeX(div), result);
+}
+
 #endif //__MIXEDTEST_HPP__
