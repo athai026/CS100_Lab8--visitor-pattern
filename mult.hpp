@@ -18,7 +18,34 @@ class Mult : public Base {
         virtual std::string stringify() {
             return ("(" + l_string + "*" + r_string + ")");
         }
+	virtual int number_of_children() {
+            if ( left != nullptr && right != nullptr) {
+                return 2;
+            }
+            else {
+                return 0;
+            }
+        }
+        virtual Base* get_child(int i) {
+            if (i  = 0) {
+                return left;
+            }
+            else {
+                return right;
+            }
+        }
 
+        void accept(Visitor* visitor, int index) {
+            if (index == 0) {
+                visitor->visit_mult_begin(this);
+            }
+            else if (index == 1) {
+                visitor->visit_mult_middle(this);
+            }
+            else if (index == 2) {
+                visitor->visit_mult_end(this);
+            }
+        }
     private:
         double l_value, r_value, product;
         std::string l_string, r_string;
