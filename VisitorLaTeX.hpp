@@ -3,40 +3,34 @@
 
 #include "visitor.hpp"
 #include "iterator.hpp"
+#include "op.hpp"
+#include "sub.hpp"
 
 class VisitorLaTeX : public Visitor {
     public:
         void visit_op(Op* node) {
-            //output << "{";
-            //output << node->stringify();
-            //output << "}";
-            std::cout << "{";
-            std::cout << node->stringify();
-            std::cout << "}";
+            output << "{";
+            output << node->stringify();
+            output << "}";
         }
 
         void visit_sub_begin(Sub* node) {
-            //output << "{(";
-            std::cout << "{(";
+            output << "{(";
         }
         void visit_sub_middle(Sub* node) {
-            //output << "-";
-            std::cout << "-";
+            output << "-";
         }
         void visit_sub_end(Sub* node) {
-            //output << ")}";
-            std::cout << ")}";
+            output << ")}";
         }
 
         std::string PrintLaTeX(Base* ptr) {
-            //output << "$";
-            std::cout << "$";
+            output << "$";
             for(Iterator it(ptr); !it.is_done(); it.next()) {
                 it.current_node()->accept(this, it.current_index());
             }
-            //output << "$";
-            std::cout << "$";
-            return "done";
+            output << "$";
+            return output.str();
         }
 };
 

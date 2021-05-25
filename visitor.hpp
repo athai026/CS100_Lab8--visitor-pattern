@@ -15,8 +15,7 @@ class Pow;
 
 class Visitor{
     public:
-        //std::ostringstream output;
-        //std::string output = "";
+        std::ostringstream output;
         
         virtual ~Visitor() = default;
 
