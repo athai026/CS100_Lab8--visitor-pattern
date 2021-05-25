@@ -4,12 +4,23 @@
 #include "visitor.hpp"
 #include "iterator.hpp"
 #include "op.hpp"
+#include "div.hpp"
 
 class VisitorLaTeX : public Visitor {
     public:
         void visit_op(Op* node) {
             output << "{";
             output << node->stringify();
+            output << "}";
+        }
+
+        void visit_div_begin(Div* node) {
+            output << "{\\frac";
+        }
+        void visit_div_middle(Div* node) {
+            output << "";
+        }
+        void visit_div_end(Div* node) {
             output << "}";
         }
 
