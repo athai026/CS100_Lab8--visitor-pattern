@@ -38,7 +38,16 @@ class VisitorLaTeX : public Visitor {
         void visit_div_end(Div* node) {
             output << "}";
         }
-        std::string PrintLaTeX(Base* ptr) {
+       	void visit_pow_begin(Pow* node) {
+            output << "{(";
+        }
+        void visit_pow_middle(Pow* node) {
+            output << "^";
+        }
+        void visit_pow_end(Pow* node) {
+            output << ")}";
+        }
+	std::string PrintLaTeX(Base* ptr) {
             output << "$";
             for(Iterator it(ptr); !it.is_done(); it.next()) {
                 it.current_node()->accept(this, it.current_index());
