@@ -3,7 +3,8 @@
 
 #include "visitor.hpp"
 #include "iterator.hpp"
-#include "op.hpp"
+#include "op.hpp
+#include "sub.hpp"
 #include "div.hpp"
 
 class VisitorLaTeX : public Visitor {
@@ -13,7 +14,15 @@ class VisitorLaTeX : public Visitor {
             output << node->stringify();
             output << "}";
         }
-
+        void visit_sub_begin(Sub* node) {
+            output << "{(";
+        }
+        void visit_sub_middle(Sub* node) {
+            output << "-";
+        }
+        void visit_sub_end(Sub* node) {
+            output << ")}";
+        }
         void visit_div_begin(Div* node) {
             output << "{\\frac";
         }
