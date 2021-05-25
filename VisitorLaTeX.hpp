@@ -3,8 +3,9 @@
 
 #include "visitor.hpp"
 #include "iterator.hpp"
-#include "op.hpp"
+#include "op.hpp
 #include "sub.hpp"
+#include "div.hpp"
 
 class VisitorLaTeX : public Visitor {
     public:
@@ -13,7 +14,6 @@ class VisitorLaTeX : public Visitor {
             output << node->stringify();
             output << "}";
         }
-
         void visit_sub_begin(Sub* node) {
             output << "{(";
         }
@@ -22,6 +22,15 @@ class VisitorLaTeX : public Visitor {
         }
         void visit_sub_end(Sub* node) {
             output << ")}";
+        }
+        void visit_div_begin(Div* node) {
+            output << "{\\frac";
+        }
+        void visit_div_middle(Div* node) {
+            output << "";
+        }
+        void visit_div_end(Div* node) {
+            output << "}";
         }
 
         std::string PrintLaTeX(Base* ptr) {
