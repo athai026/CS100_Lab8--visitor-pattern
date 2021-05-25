@@ -18,4 +18,13 @@ TEST(VisitorSubTest, Ten_minus_Five) {
     EXPECT_EQ(v.PrintLaTeX(sub), result);
 }
 
+TEST(VisitorSubTest, Six_minus_Nine) {
+    Base* op1 = new Op(6);
+    Base* op2 = new Op(9);
+    Base* sub = new Sub(op1, op2);
+    std::string result = "${({6}-{9})}$";
+    VisitorLaTeX v;
+    EXPECT_EQ(v.PrintLaTeX(sub), result);
+}
+
 #endif //__SUBTEST_HPP__ 
