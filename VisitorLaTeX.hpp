@@ -25,7 +25,7 @@ class VisitorLaTeX : public Visitor {
             output << "{(";
         }
         void visit_mult_middle(Mult* node) {
-            output << "\cdot";
+            output << "\\cdot";
         }
         void visit_mult_end(Mult* node) {
             output << ")}";
