@@ -28,7 +28,10 @@ class Visitor{
         // index = 0 -> begin
         // index = 1 -> middle
         // index = 2 -> end
-        virtual void visit_sub_begin(Sub* node) = 0;
+        virtual void visit_add_begin(Add* node) = 0;
+	virtual void visit_add_middle(Add* node) = 0;
+	virtual void visit_add_end(Add* node) = 0;
+	virtual void visit_sub_begin(Sub* node) = 0;
         virtual void visit_sub_middle(Sub* node) = 0;
         virtual void visit_sub_end(Sub* node) = 0;
         virtual void visit_div_begin(Div* node) = 0;
