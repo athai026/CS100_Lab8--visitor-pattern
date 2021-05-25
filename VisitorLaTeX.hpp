@@ -7,6 +7,7 @@
 #include "mult.hpp"
 #include "sub.hpp"
 #include "div.hpp"
+#include "pow.hpp"
 #include "rand.hpp"
 
 class VisitorLaTeX : public Visitor {
@@ -21,13 +22,22 @@ class VisitorLaTeX : public Visitor {
             output << node->stringify();
             output << "}";
         }
-	void visit_mult_begin(Mult* node) {
+	    void visit_mult_begin(Mult* node) {
             output << "{(";
         }
         void visit_mult_middle(Mult* node) {
             output << "\\cdot";
         }
         void visit_mult_end(Mult* node) {
+            output << ")}";
+        }
+	    void visit_add_begin(Add* node) {
+            output << "{(";
+        }
+        void visit_add_middle(Add* node) {
+            output << "+";
+        }
+        void visit_add_end(Add* node) {
             output << ")}";
         }
         void visit_sub_begin(Sub* node) {
@@ -48,7 +58,16 @@ class VisitorLaTeX : public Visitor {
         void visit_div_end(Div* node) {
             output << "}";
         }
-        std::string PrintLaTeX(Base* ptr) {
+       	void visit_pow_begin(Pow* node) {
+            output << "{(";
+        }
+        void visit_pow_middle(Pow* node) {
+            output << "^";
+        }
+        void visit_pow_end(Pow* node) {
+            output << ")}";
+        }
+	std::string PrintLaTeX(Base* ptr) {
             output << "$";
             for(Iterator it(ptr); !it.is_done(); it.next()) {
                 it.current_node()->accept(this, it.current_index());
