@@ -2,7 +2,7 @@
 #define __VISITOR_LATEX_HPP__
 
 #include "visitor.hpp"
-#include "iterator.hpp"
+#include "iterator.cpp"
 #include "op.hpp"
 #include "mult.hpp"
 #include "sub.hpp"
@@ -13,7 +13,7 @@
 class VisitorLaTeX : public Visitor {
     public:
         void visit_rand(Rand* node) {
-        output << "{";
+            output << "{";
             output << node->stringify();
             output << "}";
         }
@@ -67,7 +67,7 @@ class VisitorLaTeX : public Visitor {
         void visit_pow_end(Pow* node) {
             output << ")}";
         }
-	std::string PrintLaTeX(Base* ptr) {
+	    std::string PrintLaTeX(Base* ptr) {
             output << "$";
             for(Iterator it(ptr); !it.is_done(); it.next()) {
                 it.current_node()->accept(this, it.current_index());
