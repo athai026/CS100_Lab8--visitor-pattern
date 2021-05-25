@@ -6,9 +6,15 @@
 #include "op.hpp
 #include "sub.hpp"
 #include "div.hpp"
+#include "rand.hpp"
 
 class VisitorLaTeX : public Visitor {
     public:
+        void visit_rand(Rand* node) {
+        output << "{";
+            output << node->stringify();
+            output << "}";
+        }
         void visit_op(Op* node) {
             output << "{";
             output << node->stringify();
@@ -32,7 +38,6 @@ class VisitorLaTeX : public Visitor {
         void visit_div_end(Div* node) {
             output << "}";
         }
-
         std::string PrintLaTeX(Base* ptr) {
             output << "$";
             for(Iterator it(ptr); !it.is_done(); it.next()) {

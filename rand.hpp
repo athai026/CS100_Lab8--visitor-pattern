@@ -19,7 +19,15 @@ class Rand : public Base {
             ss << std::setprecision(8) << std::noshowpoint << random;
             return ss.str();
         }
-
+        virtual int number_of_children() {
+            return 0;
+        }
+        virtual Base* get_child(int i) {
+            return nullptr;
+        }
+        virtual void accept(Visitor* visitor, int index) {
+           visitor->visit_rand(this);
+        } 
     private: 
         double random;
 };
