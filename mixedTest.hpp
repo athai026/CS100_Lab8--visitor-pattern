@@ -33,4 +33,15 @@ TEST(MixedTest, DivSub) {
     EXPECT_EQ(v.PrintLaTeX(div), result);
 }
 
+TEST(MixedTest, MultDiv) {
+    Base* one = new Op(1);
+    Base* two = new Op(2);
+    Base* three = new Op(3);
+    Base* div = new Div(two, three);
+    Base* mult = new Mult(one, div);
+    std::string result = "${({1}\\cdot{\\frac{2}{3}})}$";
+    VisitorLaTeX v;
+    EXPECT_EQ(v.PrintLaTeX(mult), result);
+}
+
 #endif //__MIXEDTEST_HPP__
