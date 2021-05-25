@@ -4,6 +4,7 @@
 #include "powTest.hpp"
 #include "subTest.hpp"
 #include "divTest.hpp"
+#include "powTest.hpp"
 #include "opTest.hpp"
 
 int main(int argc, char **argv) {
