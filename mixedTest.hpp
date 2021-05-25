@@ -44,4 +44,15 @@ TEST(MixedTest, MultDiv) {
     EXPECT_EQ(v.PrintLaTeX(mult), result);
 }
 
+TEST(MixedTest, AddMult) {
+    Base* one = new Op(1);
+    Base* two = new Op(2);
+    Base* three = new Op(3);
+    Base* mult = new Mult(two, three);
+    Base* add = new Add(one, mult);
+    std::string result = "${({1}+{({2}\\cdot{3})})}$";
+    VisitorLaTeX v;
+    EXPECT_EQ(v.PrintLaTeX(add), result);
+}
+
 #endif //__MIXEDTEST_HPP__
