@@ -4,7 +4,6 @@
 #include <string>
 #include "gtest/gtest.h"
 #include "VisitorLaTeX.hpp"
-#include "iterator.cpp"
 #include "mult.hpp"
 #include "op.hpp"
 
