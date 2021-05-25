@@ -34,6 +34,9 @@ class Visitor{
         virtual void visit_div_begin(Div* node) = 0;
         virtual void visit_div_middle(Div* node) = 0;
         virtual void visit_div_end(Div* node) = 0;
+	virtual void visit_pow_begin(Pow* node) = 0;
+        virtual void visit_pow_middle(Pow* node) = 0;
+        virtual void visit_pow_end(Pow* node) = 0;
 };
 
 #endif //__VISITOR_HPP__
