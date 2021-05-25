@@ -20,6 +20,15 @@ class VisitorLaTeX : public Visitor {
             output << node->stringify();
             output << "}";
         }
+	void visit_add_begin(Add* node) {
+            output << "{(";
+        }
+        void visit_add_middle(Add* node) {
+            output << "+";
+        }
+        void visit_add_end(Add* node) {
+            output << ")}";
+        }
         void visit_sub_begin(Sub* node) {
             output << "{(";
         }
