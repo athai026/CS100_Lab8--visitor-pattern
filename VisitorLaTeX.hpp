@@ -3,9 +3,10 @@
 
 #include "visitor.hpp"
 #include "iterator.hpp"
-#include "op.hpp
+#include "op.hpp"
 #include "sub.hpp"
 #include "div.hpp"
+#include "pow.hpp"
 #include "rand.hpp"
 
 class VisitorLaTeX : public Visitor {
