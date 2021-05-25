@@ -1,4 +1,7 @@
 #include "gtest/gtest.h"
+#include "addTest.hpp"
+#include "multTest.hpp"
+#include "powTest.hpp"
 #include "subTest.hpp"
 #include "divTest.hpp"
 #include "opTest.hpp"
