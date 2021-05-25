@@ -27,5 +27,13 @@ int main() {
     std::cout << "Expected: ${({({3}+{({7}\\cdot{4})})}-{2})}$" << std::endl;
     VisitorLaTeX v;
     std::cout << "Got: " << v.PrintLaTeX(minus) << std::endl;
+
+    delete minus;
+    delete add;
+    delete mult;
+    delete two;
+    delete three;
+    delete four;
+    delete seven;
     return 0;
 }
