@@ -8,6 +8,7 @@
 #include "div.hpp"
 #include "pow.hpp"
 #include "rand.hpp"
+#include "VisitorLaTeX.hpp"
 
 int main() {
     // This is a very basic main, and being able to correctly execute this main
@@ -21,6 +22,10 @@ int main() {
     Base* add = new Add(three, mult);
     Base* minus = new Sub(add, two);
 
-    std::cout << minus->stringify() << " = " << minus->evaluate() << std::endl;
+    //std::cout << minus->stringify() << " = " << minus->evaluate() << std::endl;
+    
+    std::cout << "Expected: ${({({3}+{({7}\\cdot{4})})}-{2})}$" << std::endl;
+    VisitorLaTeX v;
+    std::cout << "Got: " << v.PrintLaTeX(minus) << std::endl;
     return 0;
 }
