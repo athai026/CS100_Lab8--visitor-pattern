@@ -3,16 +3,41 @@
 
 #include "visitor.hpp"
 #include "iterator.hpp"
+#include "op.hpp
+#include "sub.hpp"
+#include "div.hpp"
 #include "rand.hpp"
 
 class VisitorLaTeX : public Visitor {
     public:
         void visit_rand(Rand* node) {
+        output << "{";
+            output << node->stringify();
+            output << "}";
+        }
+        void visit_op(Op* node) {
             output << "{";
             output << node->stringify();
             output << "}";
         }
-
+        void visit_sub_begin(Sub* node) {
+            output << "{(";
+        }
+        void visit_sub_middle(Sub* node) {
+            output << "-";
+        }
+        void visit_sub_end(Sub* node) {
+            output << ")}";
+        }
+        void visit_div_begin(Div* node) {
+            output << "{\\frac";
+        }
+        void visit_div_middle(Div* node) {
+            output << "";
+        }
+        void visit_div_end(Div* node) {
+            output << "}";
+        }
         std::string PrintLaTeX(Base* ptr) {
             output << "$";
             for(Iterator it(ptr); !it.is_done(); it.next()) {
